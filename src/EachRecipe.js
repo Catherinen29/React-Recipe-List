@@ -11,6 +11,8 @@ export default function EachRecipe(props){
             <p>{ recipe.text }</p>
             <p>{ recipe.cuisineType }</p>
             <p>{ recipe.mealType }</p>
+            
+            <button>Select</button>
         </div>
     )
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ReturnedRecipes from "./ReturnedRecipes";
-// import SearchRecipes from "./SearchRecipes";
 
 export default function Inspo (){
 
@@ -10,7 +9,7 @@ const [newRecipe, setNewRecipe] = useState([
   {label:""}, 
   {cuisineType:""}, 
   {mealType:""},
-  {index: 0}
+  {selected: false}
 ])
 
 

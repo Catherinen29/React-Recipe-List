@@ -1,16 +1,16 @@
 import { useState } from "react";
 import EachRecipe from "./EachRecipe";
+import "./SavedRecipes.css"
 
 export default function SavedRecipes(){
 
 const [recipeList, setRecipeList] = useState([
-    {text: "recipe1", cuisineType: "italian", mealType: "lunch"}, 
-    {text: "recipe2", cuisineType: "japanese", mealType: "lunch"}, 
-    {text: "recipe3", cuisineType: "columbian", mealType: "lunch"}]);
+    {text: "", cuisineType: "", mealType: ""}]);
 
 
-const [addRecipe, setAddRecipe] = useState({text: ""})
-// const [addCuisine, setAddCuisine] = useState("")
+const [addRecipe, setAddRecipe] = useState(
+    {text: "", cuisineType:"", mealType:""})
+
 
 
 function handleChange(e){
@@ -22,8 +22,14 @@ function submitRecipe(e){
     e.preventDefault();
     console.log(e.target.value)
     setRecipeList([...recipeList, addRecipe])
+    setAddRecipe({text: ""})
 }
 
+function clearList(){
+    setRecipeList([
+        {text: "", cuisineType: "", mealType: ""}])
+
+}
 
     return(
 
@@ -38,18 +44,30 @@ function submitRecipe(e){
             </ul>
 
 
-            <button>Clear all</button>
-            <button>Clear selected</button>
+            <form className="recipeForm" onSubmit={submitRecipe}>
+                <h3>Add my own</h3>
+                <label className="addName">
+                    Meal name: 
+                    <input type="text" 
+                    name="text"
+                    placeholder="add meal" 
+                    onChange={(e) => setAddRecipe({...addRecipe, text: e.target.value})}
+                    />
+                </label>
+                
+                <label className="addCuisineType">
+                    Cuisine Type:
+                    <input name="cuisineType" 
+                    placeholder="add cuisine"
+                    onChange={(e) => setAddRecipe({...addRecipe, cuisineType: e.target.value})}
+                    />
+                </label>
 
-
-            <form onSubmit={submitRecipe}>
-                <input type="text" 
-                placeholder="add meal" 
-                onChange={(e) => setAddRecipe({...addRecipe, text: e.target.value})}
-                />
-                <label className="saveCuisine">
+                
+                <label className="addMealType">
                     Meal type:
-                    <select>
+                <select name="mealType"
+                onChange={(e) => setAddRecipe({...addRecipe, mealType: e.target.value})}>
                         <option>Breakfast</option>
                         <option>Brunch</option>
                         <option>Lunch</option>
@@ -61,6 +79,11 @@ function submitRecipe(e){
                  
                 <button>Add meal</button>
             </form>
+
+
+            <button onClick={clearList}>Clear all</button>
+            <button>Clear selected</button>
+
 
         </div>
 
