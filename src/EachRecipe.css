@@ -1,0 +1,16 @@
+.likeBtn {
+    background-color: violet;
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    padding: 5px;
+    border: 0px solid violet;
+    border-radius: 25px;
+}
+
+.eachMeal {
+    border: 2px solid blue;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+}

@@ -1,7 +1,7 @@
 import "./ReturnedRecipes.css"
 
 export default function ReturnedRecipes(props){
-const {newRecipe} = props;
+const { newRecipe, addRecipe } = props;
 
     return(
         <div className="recipeResult">

@@ -23,10 +23,28 @@ function App() {
   function clearList(){
     setRecipeList([{text: "", cuisineType: "", mealType: ""}])
   }
-   
-  const updateRecipeName = (e) => (setAddRecipe({...addRecipe, text: e.target.value}))
+
+  function deleteListItem(index){
+    const removeArr = [...recipeList]
+    removeArr.splice(index, 1)
+    setRecipeList(removeArr)
+  }
+
+  function pickMealType(){
+    
+  }
+  function changeMealType(e){
+    e.preventDefault();
+    console.log("CLICK *********")
+  }
+
+
+  const updateRecipeName = (e) => (setAddRecipe({...addRecipe, text: e.target.value})) 
+  // function linked to addName field which updates the text in the state with the user's input
   const updateMealType = (e) => (setAddRecipe({...addRecipe, mealType: e.target.value}))
+    // function linked to addCuisineType field which updates the text in the state with the user's input
   const updateCuisineType = (e) => (setAddRecipe({...addRecipe, cuisineType: e.target.value}))
+  // function linked to addMealType field which updates the text in the state with the user's input
 
 
 
@@ -38,16 +56,20 @@ function App() {
     <NavBar />
 
     <Routes>
-      <Route path="/Inspo" element={<Inspo />} />
+      <Route path="/Inspo" element={<Inspo addRecipe={addRecipe} />} />
       <Route path="/SavedRecipes" element={
-      <SavedRecipes       
+      <SavedRecipes // pass props down to SavedRecipes component      
         recipeList={recipeList} 
         addRecipe={addRecipe}
         submitRecipe={submitRecipe} 
         clearList={clearList} 
+        deleteListItem={deleteListItem}
         updateRecipeName={updateRecipeName}
         updateMealType={updateMealType}
-        updateCuisineType={updateCuisineType}/>}
+        updateCuisineType={updateCuisineType}
+        changeMealType={changeMealType}
+        />
+        }
        />
     </Routes>
 

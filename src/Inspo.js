@@ -3,7 +3,7 @@ import ReturnedRecipes from "./ReturnedRecipes";
 
 export default function Inspo (props){
 
-  const {setAddRecipe} = props;
+  const {setAddRecipe, addRecipe} = props;
 
 const [ingredient, setIngredient] = useState("")
       
@@ -60,7 +60,7 @@ function clickSearch(e){
         <div>product of API search: 
           <div>
             {newRecipe.map((item, index) => (
-              <ReturnedRecipes newRecipe={item} key={index} />))}
+              <ReturnedRecipes newRecipe={item} key={index} addRecipe={addRecipe} />))}
           </div>
         </div>
 
