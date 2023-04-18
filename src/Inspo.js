@@ -1,7 +1,9 @@
 import { useState } from "react";
 import ReturnedRecipes from "./ReturnedRecipes";
 
-export default function Inspo (){
+export default function Inspo (props){
+
+  const {setAddRecipe} = props;
 
 const [ingredient, setIngredient] = useState("")
       
@@ -61,7 +63,7 @@ function clickSearch(e){
               <ReturnedRecipes newRecipe={item} key={index} />))}
           </div>
         </div>
-  
+
       </div>
 
     )

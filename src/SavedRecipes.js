@@ -1,48 +1,44 @@
 import { useState } from "react";
 import EachRecipe from "./EachRecipe";
+import Inspo from "./Inspo";
 import "./SavedRecipes.css"
 
-export default function SavedRecipes(){
+export default function SavedRecipes(props){
 
-const [recipeList, setRecipeList] = useState([
-    {text: "", cuisineType: "", mealType: "", selected: false}]);
+const {submitRecipe, addRecipe, clearList, updateRecipeName, recipeList, updateMealType, updateCuisineType} = props;
+
+// const [recipeList, setRecipeList] = useState([
+//     {text: "", cuisineType: "", mealType: "", selected: false}]);
 
 
-const [addRecipe, setAddRecipe] = useState(
-    {text: "", cuisineType:"", mealType:""})
+// const [addRecipe, setAddRecipe] = useState(
+//     {text: "", cuisineType:"", mealType:""})
 
+console.log(recipeList)
 
 function handleChange(e){
     e.preventDefault();
-
 }
 
-function submitRecipe(e){
-    e.preventDefault();
-    setRecipeList([...recipeList, addRecipe])
-    setAddRecipe({text: "", cuisineType:"", mealType:"", selected: false})
-}
+// function submitRecipe(e){
+//     e.preventDefault();
+//     setRecipeList([...recipeList, addRecipe])
+//     setAddRecipe({text: "", cuisineType:"", mealType:"", selected: false})
+// }
 
-function handleSelect(){
-
-}
-
-function clearList(){
-    setRecipeList([
-        {text: "", cuisineType: "", mealType: ""}])
-
-}
-
+// function clearList(){
+//     setRecipeList([
+//         {text: "", cuisineType: "", mealType: ""}])
+// }
 
     return(
-
         <div> 
             <h1>Saved recipes</h1>
 
             <ul>
                 My recipes:
                 {recipeList.map((recipe, index) => (
-                    <EachRecipe recipe={recipe} />
+                    <EachRecipe recipe={recipe} index={index} />
                 ))} 
             </ul>
 
@@ -56,7 +52,8 @@ function clearList(){
                     name="text"
                     value={addRecipe.text}
                     placeholder="add meal" 
-                    onChange={(e) => setAddRecipe({...addRecipe, text: e.target.value})}
+                    // onChange={(e) => setAddRecipe({...addRecipe, text: e.target.value})}
+                    onChange={updateRecipeName}
                     />
                 </label>
                 
@@ -65,7 +62,8 @@ function clearList(){
                     <input name="cuisineType" 
                     value={addRecipe.cuisineType}
                     placeholder="add cuisine"
-                    onChange={(e) => setAddRecipe({...addRecipe, cuisineType: e.target.value})}
+                    // onChange={(e) => setAddRecipe({...addRecipe, cuisineType: e.target.value})}
+                    onChange={updateCuisineType}
                     />
                 </label>
 
@@ -73,7 +71,9 @@ function clearList(){
                     Meal type:
                 <select name="mealType"
                 value={addRecipe.mealType}
-                onChange={(e) => setAddRecipe({...addRecipe, mealType: e.target.value})}>
+                // onChange={(e) => setAddRecipe({...addRecipe, mealType: e.target.value})}
+                onChange={updateMealType}
+                >
                         <option></option>
                         <option>Breakfast</option>
                         <option>Brunch</option>
@@ -92,6 +92,7 @@ function clearList(){
 
 
         </div>
+
 
     )   
 
