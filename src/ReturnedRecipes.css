@@ -1,0 +1,7 @@
+.recipeResult {
+    border: 2px solid maroon;
+    width: 200px;
+    height: 150px;;
+    margin: 20px;
+    display: inline-block;
+}
