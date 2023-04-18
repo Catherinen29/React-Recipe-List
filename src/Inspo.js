@@ -9,7 +9,7 @@ const [newRecipe, setNewRecipe] = useState([
   {label:""}, 
   {cuisineType:""}, 
   {mealType:""},
-  {selected: false}
+  {add: false}
 ])
 
 

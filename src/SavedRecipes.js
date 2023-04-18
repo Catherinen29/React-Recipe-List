@@ -5,24 +5,26 @@ import "./SavedRecipes.css"
 export default function SavedRecipes(){
 
 const [recipeList, setRecipeList] = useState([
-    {text: "", cuisineType: "", mealType: ""}]);
+    {text: "", cuisineType: "", mealType: "", selected: false}]);
 
 
 const [addRecipe, setAddRecipe] = useState(
     {text: "", cuisineType:"", mealType:""})
 
 
-
 function handleChange(e){
     e.preventDefault();
-    console.log(e.target.value)
+
 }
 
 function submitRecipe(e){
     e.preventDefault();
-    console.log(e.target.value)
     setRecipeList([...recipeList, addRecipe])
-    setAddRecipe({text: ""})
+    setAddRecipe({text: "", cuisineType:"", mealType:"", selected: false})
+}
+
+function handleSelect(){
+
 }
 
 function clearList(){
@@ -30,6 +32,7 @@ function clearList(){
         {text: "", cuisineType: "", mealType: ""}])
 
 }
+
 
     return(
 
@@ -46,10 +49,12 @@ function clearList(){
 
             <form className="recipeForm" onSubmit={submitRecipe}>
                 <h3>Add my own</h3>
+
                 <label className="addName">
                     Meal name: 
                     <input type="text" 
                     name="text"
+                    value={addRecipe.text}
                     placeholder="add meal" 
                     onChange={(e) => setAddRecipe({...addRecipe, text: e.target.value})}
                     />
@@ -58,26 +63,27 @@ function clearList(){
                 <label className="addCuisineType">
                     Cuisine Type:
                     <input name="cuisineType" 
+                    value={addRecipe.cuisineType}
                     placeholder="add cuisine"
                     onChange={(e) => setAddRecipe({...addRecipe, cuisineType: e.target.value})}
                     />
                 </label>
 
-                
                 <label className="addMealType">
                     Meal type:
                 <select name="mealType"
+                value={addRecipe.mealType}
                 onChange={(e) => setAddRecipe({...addRecipe, mealType: e.target.value})}>
+                        <option></option>
                         <option>Breakfast</option>
                         <option>Brunch</option>
                         <option>Lunch</option>
                         <option>Dinner</option>
                         <option>Snack</option>
                     </select>
-
                 </label>
                  
-                <button>Add meal</button>
+                <button type="submit">Add meal</button>
             </form>
 
 
