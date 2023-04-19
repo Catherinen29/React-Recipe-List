@@ -28,7 +28,7 @@ function handleChange(e){
 
 
             <form className="recipeForm" onSubmit={submitRecipe}>
-                <h3>Add my own</h3>
+                <h3>Add your own</h3>
                 {/* new meal user input: */}
                 <label className="addName">
                     Meal name: 
