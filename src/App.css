@@ -1,3 +1,23 @@
+
+button {
+  margin: 10px;
+  grid-column: 2;
+  border-radius: 100px;
+  border: 0;
+  padding: 7px 20px;
+  background-color: #E14D2A;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.NavBar {
+  background-color: #F9D949;
+  padding: 3%;
+}
+
+
 .App {
   text-align: center;
 }

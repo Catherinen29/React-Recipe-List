@@ -8,71 +8,57 @@ import { useState } from "react";
 
 function App() {
 
-  const [recipeList, setRecipeList] = useState([
-    {text: "", cuisineType: "", mealType: "", selected: false}]);
+  const [recipeList, setRecipeList] = useState([]);
 
-  const [addRecipe, setAddRecipe] = useState(
-    {text: "", cuisineType:"", mealType:""})
-  
-  function submitRecipe(e){
-    e.preventDefault();
-    setRecipeList([...recipeList, addRecipe])
-    setAddRecipe({text: "", cuisineType:"", mealType:"", selected: false})
+ 
+  function addRecipe(newRecipe){
+    const isInList = recipeList.some((recipe) => recipe.id === newRecipe.id)
+    if (!isInList) {
+      setRecipeList([...recipeList, newRecipe])}
+
   }
+
+
 
   function clearList(){
-    setRecipeList([{text: "", cuisineType: "", mealType: ""}])
+    setRecipeList([])
   }
 
-  function deleteListItem(index){
+  function deleteListItem(id){
     const removeArr = [...recipeList]
-    removeArr.splice(index, 1)
-    setRecipeList(removeArr)
-  }
-
-  function pickMealType(){
+    const indexToRemove = removeArr.findIndex((recipe) => recipe.id === id)
+    // get the index of the item using the ID
     
-  }
-  function changeMealType(e){
-    e.preventDefault();
-    console.log("CLICK *********")
+    if (indexToRemove !== -1) {
+      removeArr.splice(indexToRemove, 1)
+    }
+     // use splice to remove an item based on it's position in the array
+    setRecipeList(removeArr) // set the new state
   }
 
-
-  const updateRecipeName = (e) => (setAddRecipe({...addRecipe, text: e.target.value})) 
-  // function linked to addName field which updates the text in the state with the user's input
-  const updateMealType = (e) => (setAddRecipe({...addRecipe, mealType: e.target.value}))
-    // function linked to addCuisineType field which updates the text in the state with the user's input
-  const updateCuisineType = (e) => (setAddRecipe({...addRecipe, cuisineType: e.target.value}))
-  // function linked to addMealType field which updates the text in the state with the user's input
 
 
 
   return (
     <div className="App">
 
-    <div>Nav Bar</div>
-    
-    <NavBar />
+    <div className="NavBar">
+    <NavBar /> </div>
 
     <Routes>
       <Route path="/Inspo" element={<Inspo addRecipe={addRecipe} />} />
-      <Route path="/SavedRecipes" element={
-      <SavedRecipes // pass props down to SavedRecipes component      
+      <Route path="/SavedRecipes" element={<SavedRecipes // pass props down to SavedRecipes component      
         recipeList={recipeList} 
-        addRecipe={addRecipe}
-        submitRecipe={submitRecipe} 
+        addRecipe={addRecipe} 
         clearList={clearList} 
         deleteListItem={deleteListItem}
-        updateRecipeName={updateRecipeName}
-        updateMealType={updateMealType}
-        updateCuisineType={updateCuisineType}
-        changeMealType={changeMealType}
+        // changeMealType={changeMealType}
         />
         }
        />
     </Routes>
 
+    <footer />
     </div>
 
   );

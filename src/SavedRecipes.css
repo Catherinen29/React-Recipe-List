@@ -1,5 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+
+.SavedHeading{
+    color: #E14D2A;
+    font-family: 'Libre Baskerville', serif;
+}
+
 .recipeForm {
-    border: 2px solid darkblue;
+    border: 2px solid #E14D2A;
+    border-radius: 10px;
     padding: 10px;
-    margin: 20px;
+    margin: 5% 30%;
+    display: block;
+}
+
+h3 {
+    margin: 3% auto 2% auto;
+}
+.addType{
+    margin: 3% 5%;
+    text-align: left;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+input[name=cuisineType], input[name=text], select[name=mealType] {
+    margin: 5px 0;
+}
+
+.recipeList {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
 }

@@ -1,7 +1,18 @@
 .recipeResult {
-    border: 2px solid orange;
+    border: 2px solid #E14D2A;
+    border-radius: 10px;
     width: 200px;
-    height: 150px;;
+    height: 200px;
     margin: 20px;
+    padding: 10px;
+    text-align: center;
     display: inline-block;
+}
+
+.returnedLabel, .returnedMeal, .returnedCuisine {
+    margin: 10px;
+}
+
+button{
+    
 }

@@ -1,19 +1,16 @@
 import { useState } from "react";
 import ReturnedRecipes from "./ReturnedRecipes";
+import uuid from 'react-uuid';
+import "./Inspo.css";
 
 export default function Inspo (props){
 
-  const {setAddRecipe, addRecipe} = props;
+  const {setAddRecipe, addRecipe } = props;
 
 const [ingredient, setIngredient] = useState("")
       
-const [newRecipe, setNewRecipe] = useState([
-  {label:""}, 
-  {cuisineType:""}, 
-  {mealType:""},
-  {add: false}
-])
 
+const [recipes, setRecipes] = useState([])
 
 function clickSearch(e){
     e.preventDefault();
@@ -34,19 +31,19 @@ function clickSearch(e){
           ))
 
 // Update the state with the new array of recipes:
-        setNewRecipe(searchRecipeArr) 
+        setRecipes(searchRecipeArr) 
     }) 
     setIngredient("")
-    console.log(newRecipe)
+    // console.log(newRecipe)
     }
 
 
     return(
 
         <div>
-        <h1>Recipe inspiration</h1>
+        <h1 className="InspoHeading">Find me foods</h1>
 
-        <form onSubmit={clickSearch}>
+        <form onSubmit={clickSearch} className="inspoForm">
             <input 
                 value={ingredient}
                 onChange={(e) => setIngredient(e.target.value)}
@@ -54,13 +51,13 @@ function clickSearch(e){
                 required
                 />
 
-            <button type="submit">search</button>
+            <button type="submit">Search</button>
         </form>
 
-        <div>product of API search: 
-          <div>
-            {newRecipe.map((item, index) => (
-              <ReturnedRecipes newRecipe={item} key={index} addRecipe={addRecipe} />))}
+        <div>
+          <div className="searchResults">
+            {recipes.map((recipe, index) => (
+              <ReturnedRecipes recipe={recipe} key={index} addRecipe={addRecipe} />))}
           </div>
         </div>
 

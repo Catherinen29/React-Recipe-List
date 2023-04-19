@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "./NavBar.css"
 
 export default function NavBar(){
     return(
-        <nav>
+        <nav className="nav">
             {/* This stuff lets you navigate between components
                 without re-loading the browser each time */}
             {/* <Link to="/">Go to home page</Link> */}

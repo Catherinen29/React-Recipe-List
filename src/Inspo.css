@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
+.InspoHeading {
+    color: #E14D2A;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.inspoForm {
+    border: 2px solid #E14D2A;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10% 25%;
+    display: block;
+}
+
+.searchResults {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
