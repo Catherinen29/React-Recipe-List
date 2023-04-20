@@ -8,8 +8,9 @@ export default function SavedRecipes(props){
 
 const {addRecipe, clearList, deleteListItem, recipeList, setRecipeList, changeMealType} = props;
 
+
 const [userRecipe, setUserRecipe] = useState(
-    {text: "", cuisineType:"", mealType:"", selected: false, id: uuid()})
+    {text: "", cuisineType:"", mealType:"",  id: uuid()})
 
 const updateRecipe = (e) => (setUserRecipe({...userRecipe, [e.target.name]: e.target.value})) 
 // function linked to addName field which updates the text in the state with the user's input
@@ -18,8 +19,10 @@ const updateRecipe = (e) => (setUserRecipe({...userRecipe, [e.target.name]: e.ta
 function submitRecipe(e) {
     e.preventDefault();
     addRecipe(userRecipe)
-    setUserRecipe({text: "", cuisineType:"", mealType:"", selected: false, id: uuid()})
+    setUserRecipe({text: "", cuisineType:"", mealType:"", id: uuid()})
 }
+
+
 
 const [selectedItemsIDs, setSelectedItemsIDs] = useState([])
 
@@ -58,7 +61,7 @@ function removeSelected (){
                     name="text"
                     value={userRecipe.text}
                     placeholder="Enter meal name" 
-                    autocomplete="off"
+                    autoComplete="off"
                     onChange={updateRecipe}
                     />
                 </label>
@@ -69,7 +72,7 @@ function removeSelected (){
                     <input name="cuisineType" 
                     value={userRecipe.cuisineType}
                     placeholder="Enter cuisine"
-                    autocomplete="off"
+                    autoComplete="off"
                     onChange={updateRecipe}
                     />
                 </label>
@@ -108,6 +111,8 @@ function removeSelected (){
                     userRecipe={userRecipe} 
                     selectedItemsIDs={selectedItemsIDs}
                     addOrRemove={addOrRemove}
+                    recipeList={recipeList}
+                    setRecipeList={setRecipeList}
                     />
             ))} 
             </div>

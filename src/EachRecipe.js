@@ -3,11 +3,36 @@ import "./EachRecipe.css"
 
 export default function EachRecipe(props){
     
-    const { recipe, deleteListItem, index, userRecipe, addOrRemove, selectedItemsIDs } = props;
+    const { recipe, deleteListItem, index, userRecipe, 
+        addOrRemove, selectedItemsIDs, recipeList, setRecipeList } = props;
      
-function changeMealType(id){
-    console.log(id)
+
+const [chosenMealType, setChosenMealType] = useState("")
+// const [newRecipeType, setNewRecipeType] = 
+
+function selectMealType(e){
+    setChosenMealType(e.target.value) // set the state for this element as users input
 }
+
+function changeMealType (e) {
+    e.preventDefault();
+    // recipe.mealType = chosenMealType;
+    // console.log(recipe.mealType)
+
+    const updatedMealType = recipeList.map((item) => {
+        if (recipe.id === item.id) {
+            return { ...recipe, mealType: chosenMealType };
+          }
+    });
+    setRecipeList(updatedMealType);
+}
+    
+
+
+
+// recipe.mealType is displayed on the UI
+// the drop down menu updates selectMealType which in turn updates the state chosenMealType
+// now update recipe.mealType with chosenMealType
 
 
     return(
@@ -29,12 +54,12 @@ function changeMealType(id){
 
             </div>
             
-            <form className="editMeal">
+            <form className="editMeal" onSubmit={changeMealType}>
             Edit meal type: &nbsp;&nbsp;
                 <label>
                     <select name="updateMealType"
-                    value={userRecipe.mealType}
-                    onChange={changeMealType}>
+                    value={chosenMealType}
+                    onChange={selectMealType}>
                     
                         <option></option>
                         <option>Breakfast</option>
