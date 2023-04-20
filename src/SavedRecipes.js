@@ -6,8 +6,8 @@ import uuid from 'react-uuid';
 
 export default function SavedRecipes(props){
 
-const {addRecipe, clearList, deleteListItem, recipeList, changeMealType} = props;
-  
+const {addRecipe, clearList, deleteListItem, recipeList, setRecipeList, changeMealType} = props;
+
 const [userRecipe, setUserRecipe] = useState(
     {text: "", cuisineType:"", mealType:"", selected: false, id: uuid()})
 
@@ -21,10 +21,29 @@ function submitRecipe(e) {
     setUserRecipe({text: "", cuisineType:"", mealType:"", selected: false, id: uuid()})
 }
 
+const [selectedItemsIDs, setSelectedItemsIDs] = useState([])
 
-function handleChange(e){
-    e.preventDefault();
+function addOrRemove(e, id){
+// console.log(selectedItemsIDs.includes(id))
+const selectedItemsArray = [...selectedItemsIDs] // copy the array
+
+    if (selectedItemsArray.includes(id)) { 
+        const indexToRemove = selectedItemsArray.indexOf(id) // get the index of the id that has been checked
+        selectedItemsArray.splice(indexToRemove) // remove the id using the index
+        setSelectedItemsIDs(selectedItemsArray) // set the state with the new array having removed the id
+
+    } else if (!selectedItemsArray.includes(id)) {
+        setSelectedItemsIDs([...selectedItemsArray, id]) // add the id to the array
+    }
+  }
+
+function removeSelected (){
+    const checkIfIDIncluded = recipeList.filter((bananas) => !selectedItemsIDs.includes(bananas.id))
+    setRecipeList(checkIfIDIncluded)
 }
+// use filter to create a copy of the recipeList array only of 
+// objects that include the id of each item in the selectedItemsIDs array
+// update the recipeList state
 
     return(
         <div> 
@@ -76,16 +95,19 @@ function handleChange(e){
 
             <div className="clearBtns">
                 <button onClick={clearList}>Clear all</button>
-                <button>Clear selected</button>
+                <button onClick={removeSelected}>Clear selected</button>
             </div>
 
             <div className="recipeList">
             {recipeList.map((recipe, index) => (
                 <EachRecipe 
+                    key={recipe.id}
                     recipe={recipe} index={index} 
                     deleteListItem={deleteListItem} 
                     changeMealType={changeMealType}
                     userRecipe={userRecipe} 
+                    selectedItemsIDs={selectedItemsIDs}
+                    addOrRemove={addOrRemove}
                     />
             ))} 
             </div>

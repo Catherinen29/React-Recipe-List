@@ -12,13 +12,11 @@ function App() {
 
  
   function addRecipe(newRecipe){
-    const isInList = recipeList.some((recipe) => recipe.id === newRecipe.id)
-    if (!isInList) {
+    const isInRecipeList = recipeList.some((recipe) => recipe.id === newRecipe.id)
+    if (!isInRecipeList) {
       setRecipeList([...recipeList, newRecipe])}
 
   }
-
-
 
   function clearList(){
     setRecipeList([])
@@ -49,6 +47,7 @@ function App() {
       <Route path="/Inspo" element={<Inspo addRecipe={addRecipe} />} />
       <Route path="/SavedRecipes" element={<SavedRecipes // pass props down to SavedRecipes component      
         recipeList={recipeList} 
+        setRecipeList={setRecipeList}
         addRecipe={addRecipe} 
         clearList={clearList} 
         deleteListItem={deleteListItem}

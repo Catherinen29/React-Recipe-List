@@ -3,19 +3,11 @@ import "./EachRecipe.css"
 
 export default function EachRecipe(props){
     
-    const { recipe, deleteListItem, index, userRecipe } = props;
+    const { recipe, deleteListItem, index, userRecipe, addOrRemove, selectedItemsIDs } = props;
      
-
-    const [IsSelected, setIsSelected] = useState([])
-
-    function selectItem(e, recipe){
-        console.log("CLICK *********")
-        if (recipe.checked){
-            console.log("HELLO *******")
-        }
-        // setIsSelected(...IsSelected, e.target.id)
-        console.log(recipe)
-      }
+function changeMealType(id){
+    console.log(id)
+}
 
 
     return(
@@ -32,7 +24,8 @@ export default function EachRecipe(props){
              
             <button className="deleteBtn" onClick={() => deleteListItem(recipe.id)}>Delete</button>
           
-            <label>Select: <input type="checkbox" name="checkBox" onChange={() => selectItem(recipe.id)} /></label> 
+            <label>Select: <input type="checkbox" name="checkBox" 
+            onChange={(e) => addOrRemove(e, recipe.id)} /></label> 
 
             </div>
             
@@ -41,8 +34,8 @@ export default function EachRecipe(props){
                 <label>
                     <select name="updateMealType"
                     value={userRecipe.mealType}
-                    // onChange={changeMealType}>
-                    >
+                    onChange={changeMealType}>
+                    
                         <option></option>
                         <option>Breakfast</option>
                         <option>Brunch</option>
