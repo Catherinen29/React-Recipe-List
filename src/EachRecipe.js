@@ -28,8 +28,6 @@ function changeMealType (e) {
 }
     
 
-
-
 // recipe.mealType is displayed on the UI
 // the drop down menu updates selectMealType which in turn updates the state chosenMealType
 // now update recipe.mealType with chosenMealType
