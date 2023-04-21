@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./EachRecipe.css"
+import uuid from 'react-uuid';
 
 export default function EachRecipe(props){
     
@@ -8,23 +9,31 @@ export default function EachRecipe(props){
      
 
 const [chosenMealType, setChosenMealType] = useState("")
-// const [newRecipeType, setNewRecipeType] = 
+
+const [updateRecipeWithNewMealType, setUpdateRecipeWithNewMealType] = useState({
+    text: recipe.label, cuisineType:recipe.cuisineType, mealType:chosenMealType, id: uuid()}
+)
 
 function selectMealType(e){
     setChosenMealType(e.target.value) // set the state for this element as users input
 }
 
+
 function changeMealType (e) {
     e.preventDefault();
-    // recipe.mealType = chosenMealType;
-    // console.log(recipe.mealType)
+    console.log(recipe)
+    console.log(recipeList)
 
-    const updatedMealType = recipeList.map((item) => {
-        if (recipe.id === item.id) {
-            return { ...recipe, mealType: chosenMealType };
-          }
-    });
-    setRecipeList(updatedMealType);
+    const newRecipeList = [...recipeList]
+ 
+    // setRecipeList([...recipeList], {mealType: chosenMealType})
+    
+    // const updatedMealType = newRecipeList.map((item) => {
+    //     if (recipe.id === item.id) {
+    //         setRecipeList([...recipeList], updateRecipeWithNewMealType);
+    //       }
+
+    // }); 
 }
     
 

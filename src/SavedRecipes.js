@@ -13,7 +13,7 @@ const [userRecipe, setUserRecipe] = useState(
     {text: "", cuisineType:"", mealType:"",  id: uuid()})
 
 const updateRecipe = (e) => (setUserRecipe({...userRecipe, [e.target.name]: e.target.value})) 
-// function linked to addName field which updates the text in the state with the user's input
+// function linked to addType field which updates the text in the state with the user's input
 
 
 function submitRecipe(e) {
