@@ -23,7 +23,6 @@ function submitRecipe(e) {
 }
 
 
-
 const [selectedItemsIDs, setSelectedItemsIDs] = useState([])
 
 function addOrRemove(e, id){

@@ -20,7 +20,6 @@ function clickSearch(e){
     fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${ingredient}&app_id=9bc1e042&app_key=11c9111cb077c2f3afaa930c0214705e%09&random=true`)
     .then((response) => response.json())
     .then((results) => {
-        // console.log(results) 
 
 // Create an array which holds all the returned recipes:
         const searchRecipeArr = results.hits.map((recipeData, index) => ({ 
