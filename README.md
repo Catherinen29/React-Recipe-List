@@ -40,14 +40,14 @@ The webpage needed to include multiple pages using React Router and fetch data f
 
 ## User stories
 
-As a user, I want to input what meals I want to add to this week’s list
-As a user, I want to like individual meal/recipes to try again
-As a user, I want to remove individual meals from the list
-As a user, I want to be able to edit individual items on the list
-As a user, I want to clear the whole list
-As a user, I want to clear the ‘ticked’ items on the list
-As a user, I want inspiration for what to eat, by searching from a database
-As a user, I want to be able to click into different pages
+- As a user, I want to input what meals I want to add to this week’s list
+- As a user, I want to like individual meal/recipes to try again
+- As a user, I want to remove individual meals from the list
+- As a user, I want to be able to edit individual items on the list
+- As a user, I want to clear the whole list
+- As a user, I want to clear the ‘ticked’ items on the list
+- As a user, I want inspiration for what to eat, by searching from a database
+- As a user, I want to be able to click into different pages
 
 ## Planning
 
